@@ -61,6 +61,11 @@ class _SearchState extends State<Search> {
                                 if (snapshot.hasData) {
                                   if (snapshot.data?.exists ?? false) {
                                     return ElevatedButton(
+                                      style: ElevatedButton.styleFrom(
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10)),
+                                      ),
                                       onPressed: () async {
                                         await doc.reference
                                             .collection('followers')
@@ -73,6 +78,12 @@ class _SearchState extends State<Search> {
                                     );
                                   }
                                   return ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.green,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10)),
+                                    ),
                                     onPressed: () async {
                                       await doc.reference
                                           .collection('followers')
@@ -83,7 +94,10 @@ class _SearchState extends State<Search> {
                                       });
                                       setState(() {});
                                     },
-                                    child: const Text('Follow'),
+                                    child: const Text(
+                                      'Follow',
+                                      style: TextStyle(color: Colors.white),
+                                    ),
                                   );
                                 } else {
                                   return const CircularProgressIndicator();
