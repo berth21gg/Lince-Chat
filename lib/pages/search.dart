@@ -51,6 +51,40 @@ class _SearchState extends State<Search> {
                         itemBuilder: (context, index) {
                           DocumentSnapshot doc = snapshot.data!.docs[index];
                           return ListTile(
+                            leading: IconButton(
+                              icon: const Icon(
+                                Icons.chat,
+                                color: Colors.green,
+                              ),
+                              onPressed: () async {
+                                QuerySnapshot q = await FirebaseFirestore
+                                    .instance
+                                    .collection('chats')
+                                    .where('users', arrayContains: [
+                                  FirebaseAuth.instance.currentUser!.uid,
+                                  doc.id,
+                                ]).get();
+
+                                if (q.docs.isEmpty) {
+                                  // Create a new chat
+                                  print('No doc');
+                                  var data = {
+                                    'users': [
+                                      FirebaseAuth.instance.currentUser!.uid,
+                                      doc.id,
+                                    ],
+                                    'recent_text': 'Hi',
+                                  };
+
+                                  await FirebaseFirestore.instance
+                                      .collection('chats')
+                                      .add(data);
+                                } else {
+                                  // start chat
+                                  print('Yes doc');
+                                }
+                              },
+                            ),
                             title: Text(doc['username']),
                             trailing: FutureBuilder<DocumentSnapshot>(
                               future: doc.reference
