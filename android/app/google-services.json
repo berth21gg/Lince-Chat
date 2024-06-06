@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "33505733443",
+    "project_id": "lincechatapp",
+    "storage_bucket": "lincechatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33505733443:android:93f933319e0d8a4fd0ddf6",
+        "android_client_info": {
+          "package_name": "com.example.lince_chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQzQf5o4tH4b2qcVyhhVUoHfbeyvLaukM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
